@@ -51,6 +51,7 @@ public class App
     }
     
     public static void pushCounterMetrics(int numTimes) {
+    		statsd.recordGaugeValue("raj_page_hits_num_times",numTimes);
     	for (int i=0; i < numTimes; i++) {
     		statsd.incrementCounter("raj_page_hits","webpage:page1");
     		
@@ -61,6 +62,7 @@ public class App
     
     public static void pushGaugeMetrics(int numTimes) {
     	
+    		statsd.recordGaugeValue("raj_economic_climate_num_times",numTimes);
     	//Im pretty sure that only the last value will be taken by the dogstatd agent for Gauges.
     	//So, even though Im looping here, it should only be the last value. Just want to see what happens...
     	for (int i=0; i < numTimes; i++) {
@@ -73,7 +75,7 @@ public class App
     }
     
     public static void pushHistogramMetrics(int numTimes) {
-    	
+    		statsd.recordGaugeValue("raj_page_loadtime_num_times",numTimes);
     	// This should record each of these values, and show the mean, 95th percentile, max, min etc etc..
     	for (int i=0; i < numTimes; i++) {
     		
