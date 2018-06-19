@@ -3,6 +3,7 @@ package genomics.pushdatadog;
 import com.timgroup.statsd.ServiceCheck;
 import com.timgroup.statsd.StatsDClient;
 import com.timgroup.statsd.NonBlockingStatsDClient;
+import java.util.Random;
 
 /**
  * Hello world!
@@ -21,7 +22,7 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World! ABout to push some metrics" );
-        
+        Random rand = new Random();        
 //        statsd.incrementCounter("foo");
 //        statsd.recordGaugeValue("bar", 100);
 //        statsd.recordGaugeValue("baz", 0.01); /* DataDog extension: support for floating-point gauges */
@@ -43,9 +44,9 @@ public class App
 //         */
 //        statsd.recordExecutionTime("bag", 25, "cluster:foo"); /* DataDog extension: cluster tag */
         
-        pushCounterMetrics(10);
-        pushGaugeMetrics(10);
-        pushHistogramMetrics(10);
+        pushCounterMetrics(rand.nextInt(50));
+        pushGaugeMetrics(rand.nextInt(50));
+        pushHistogramMetrics(rand.nextInt(50));
         
     }
     
